@@ -1,46 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WX Share Test</title>
+
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+
+<body>
+
+<h1>WX Share API Test</h1>
+
 <script>
 
-alert("当前URL：" + location.href);
+alert("当前URL:\n" + location.href);
 
 wx.config({
+
     debug: true,
+
     appId: 'wxdaad1c31ff0e9e30',
-    timestamp: '1778813924',
-    nonceStr: '0db4856c-0b81-4388-9ccf-7e2b2ff95e98',
-    signature: '45ea61829077b4c3c4d4febf649151308079c06d',
+
+    timestamp: '1778814429',
+
+    nonceStr: '9318e234-73f9-4702-86f0-7bdbd9d0dcb9',
+
+    signature: 'de7103f977b961e6f46d7583f71bc153252fffc7',
+
     jsApiList: [
         'checkJsApi',
-        'getLocation'
+        'updateAppMessageShareData',
+        'updateTimelineShareData'
     ]
 });
 
 wx.ready(function () {
 
-    alert("wx.ready");
+    alert("wx.ready 成功");
 
     wx.checkJsApi({
-        jsApiList: ['getLocation'],
+
+        jsApiList: [
+            'updateAppMessageShareData',
+            'updateTimelineShareData'
+        ],
+
         success: function(res) {
-            alert("checkJsApi: " + JSON.stringify(res));
+
+            alert("checkJsApi:\n" + JSON.stringify(res));
+
         }
+
     });
 
-    wx.getLocation({
-        type: 'wgs84',
+    // 分享给好友
+    wx.updateAppMessageShareData({
 
-        success: function (res) {
-            alert("成功：" + JSON.stringify(res));
+        title: 'WX SDK TEST',
+
+        desc: '外域微信分享测试',
+
+        link: location.href,
+
+        imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+
+        success: function () {
+
+            alert("好友分享设置成功");
+
         },
 
-        fail: function (err) {
-            alert("失败：" + JSON.stringify(err));
+        fail: function(err){
+
+            alert("好友分享设置失败:\n" + JSON.stringify(err));
+
         }
+
+    });
+
+    // 分享到朋友圈
+    wx.updateTimelineShareData({
+
+        title: 'WX Timeline TEST',
+
+        link: location.href,
+
+        imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+
+        success: function () {
+
+            alert("朋友圈分享设置成功");
+
+        },
+
+        fail: function(err){
+
+            alert("朋友圈分享设置失败:\n" + JSON.stringify(err));
+
+        }
+
     });
 
 });
 
 wx.error(function (res) {
-    alert("wx.error: " + JSON.stringify(res));
+
+    alert("wx.error:\n" + JSON.stringify(res));
+
 });
 
 </script>
+
+</body>
+</html>
