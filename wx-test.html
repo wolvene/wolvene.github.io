@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+
+<script>
+
+wx.config({
+    debug: true,
+
+    appId: 'wxdaad1c31ff0e9e30',
+
+    timestamp: '1778812431',
+
+    nonceStr: '9f4f7c6e-a5d2-417d-aefc-c38948208980',
+
+    signature: '87fb00011bb3327c096cdc1b735e1128bfa39105',
+
+    jsApiList: ['checkJsApi']
+});
+
+wx.ready(function () {
+    alert("wx.config 成功");
+});
+
+wx.error(function (res) {
+    alert(JSON.stringify(res));
+});
+
+</script>
+
+</body>
+</html>
