@@ -16,96 +16,25 @@
 alert("当前URL:\n" + location.href);
 
 wx.config({
-
-    debug: true,
-
-    appId: 'wxdaad1c31ff0e9e30',
-
-    timestamp: '1778asdsadsa814429',
-
-    nonceStr: '93sasdsa18e234-7asdasd3f9-470asdsad2-86f0-7bdbd9d0dcb9',
-
-    signature: 'de7103f977b961e6asdasdf46d75sdasdasd83f71bc153252fffc7',
-
-    jsApiList: [
-        'checkJsApi',
-        'updateAppMessageShareData',
-        'updateTimelineShareData'
-    ]
+    debug:true,
+    appId:'wxdaad1c31ff0e9e30',
+    timestamp:'1778833936',
+    nonceStr:'a383730a-242e-43d2-a594-4bd4f86af199',
+    signature:'7eb84f27a219b224446769d160459e713764bdc4',
+    jsApiList:['closeWindow']
 });
 
-wx.ready(function () {
+wx.ready(function(){
 
-    alert("wx.ready 成功");
+    alert("ready");
 
-    wx.checkJsApi({
-
-        jsApiList: [
-            'updateAppMessageShareData',
-            'updateTimelineShareData'
-        ],
-
-        success: function(res) {
-
-            alert("checkJsApi:\n" + JSON.stringify(res));
-
-        }
-
-    });
-
-    // 分享给好友
-    wx.updateAppMessageShareData({
-
-        title: 'WX SDK TEST',
-
-        desc: '外域微信分享测试',
-
-        link: location.href,
-
-        imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-
-        success: function () {
-
-            alert("好友分享设置成功");
-
-        },
-
-        fail: function(err){
-
-            alert("好友分享设置失败:\n" + JSON.stringify(err));
-
-        }
-
-    });
-
-    // 分享到朋友圈
-    wx.updateTimelineShareData({
-
-        title: 'WX Timeline TEST',
-
-        link: location.href,
-
-        imgUrl: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-
-        success: function () {
-
-            alert("朋友圈分享设置成功");
-
-        },
-
-        fail: function(err){
-
-            alert("朋友圈分享设置失败:\n" + JSON.stringify(err));
-
-        }
-
-    });
+    wx.closeWindow();
 
 });
 
-wx.error(function (res) {
+wx.error(function(res){
 
-    alert("wx.error:\n" + JSON.stringify(res));
+    alert(JSON.stringify(res));
 
 });
 
